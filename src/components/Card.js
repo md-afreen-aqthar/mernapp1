@@ -1,6 +1,9 @@
 import React from "react";
 
-export default function Card() {
+export default function Card(props) {
+ let options=props.options;
+ let priceOptions=Object.keys(options)
+ 
   return (
     <div>
       <div>
@@ -10,8 +13,8 @@ export default function Card() {
         >
           <img src="https://plus.unsplash.com/premium_photo-1689371958614-cd30635630ef?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">This is some important text</p>
+            <h5 className="card-title">{props.ecommerceName}</h5>
+           
             <div className="container w-100">
               <select className="m-2 h-100 bg-success">
                 {Array.from(Array(6), (e, i) => {
@@ -24,8 +27,9 @@ export default function Card() {
                 })}
               </select>
               <select className="m-2 h-100 bg-success">
-                <option value="half">half</option>
-                <option value="full">full</option>
+               {priceOptions.map((data)=>{
+                return <option key={data} value={data}>{data}</option>
+               })}
               </select>
               <div className="d-inline h-100 fs-5 ">Total Price</div>
             </div>
